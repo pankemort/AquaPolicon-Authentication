@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 export const dbconnect=()=>{ 
-    mongoose.connect("mongodb://127.0.0.1:27017", {
+    mongoose.connect(process.env.MONGO_URI, {
     dbName: "backendapi",
 
-}).then(() =>
-    console.log("database connected")).catch((e)=> console.log(e));
+}).then((c) =>
+    console.log(`database connected with host ${c.connection.host}`)).catch((e)=> console.log(e));
 };
